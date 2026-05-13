@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #080808;
+  --blured: rgba(0, 0, 0, 0.65);
+  --accent: #a93226;
+  --surface: #111111;
+  --surface-muted: #0d0d0d;
+  --text: #f0f0f0;
+  --text-muted: #999999;
+  --text-subtle: #555555;
+  --border: rgba(255, 255, 255, 0.07);
+  --button: #080808;
+  --closeButton: #a93226;
+  --saveButton: #1a1a1a;
+  --shadow: 0 2px 12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --deleteToast: #a93226;
+  --addToast: #555555;
+  --note-accent: #c9843a;
+  --journal-accent: #6b8f6b;
+  --todo-accent: #4a7fa5;
+  --open-accent: #7b5ea7;
+  --surface-hovered: #1a1a1a;
+  --border-hovered: rgba(255, 255, 255, 0.13);
+  --button-hovered: #111111;
+  --progress-safe: var(--surface);
+  --progress-unsafe: var(--accent);
+  --svg-fill: #ffffff;
+  --downloadSpeed-color: #60a5fa;
+  --uploadSpeed-color: #4ade80;
+
+  --font-small: 10px;
+  --font-medium: 14px;
+  --font-large: 18px;
+  --font-huge: 24px;
+  --font-enourmous: 30px;
+
+  --border-small: 4px;
+  --border-medium: 8px;
+  --border-large: 12px;
+  --border-huge: 18px;
+  --border-enourmous: 24px;
+
+  --padding-small: 2px;
+  --padding-medium: 4px;
+  --padding-large: 8px;
+  --padding-huge: 12px;
+  --padding-enourmous: 18px;
+
+  --gap-small: 4px;
+  --gap-medium: 8px;
+  --gap-large: 12px;
+  --gap-huge: 18px;
+  --gap-enourmous: 24px;
+
+  --occupied: green;
+  --unoccupied: red;
+}
+body,
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: var(--bg);
+  color: var(--text-muted);
+  font-size: var(--font-small);
+}
