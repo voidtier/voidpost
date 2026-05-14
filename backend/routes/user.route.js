@@ -7,21 +7,20 @@ const user = require("../models/user.model.js");
 
 router.post("/signup", async function (req, res) {
   try {
-    const { firstname, lastname, email, username, password } = req.body;
-
+    const { first_name, last_name, username, email, password } = req.body;
     const hashedPassword = await bcryptjs.hash(password, 10);
 
     const newUSer = new user({
       name: {
-        firstname: firstname,
-        lastname: lastname,
+        first_name: first_name,
+        last_name: last_name,
       },
       email,
       username,
       password: hashedPassword,
     });
     await newUSer.save();
-    res.status(201);
+    res.status(201).json({ message: "user is created" });
   } catch (error) {
     res.status(500).send("Error saving user: " + error.message);
   }
@@ -33,13 +32,13 @@ router.post("/signin", async function (req, res) {
     const foundUser = await user.findOne({ email });
 
     if (!foundUser) {
-      return res.redirect("/signin?logerror=email or password is incorrect");
+      return res.json({ message: "wrong user" });
     }
 
     const corretPassword = await bcryptjs.compare(password, foundUser.password);
 
     if (!corretPassword) {
-      return res.redirect("/signin?logerror=email or password is incorrect");
+      return res.json({ message: "wrong user" });
     }
 
     const token = jsonwebtoken.sign(
@@ -51,8 +50,9 @@ router.post("/signin", async function (req, res) {
       { expiresIn: "1d" },
     );
 
-    res.cookie("token", token, { httpOnly: true });
-    return res.redirect("/");
+    return res
+      .cookie("token", token, { httpOnly: true })
+      .json({ message: "user is got" });
   } catch (error) {
     return res.status(500).send("Error logging in: " + error.message);
   }
